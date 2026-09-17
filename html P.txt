@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Something For You ♡</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Falling petals -->
+    <div id="petalField"></div>
+
+    <!-- Music -->
+    <audio id="backgroundMusic" src="music.mp3" loop></audio>
+
+    <!-- Music button -->
+    <button id="musicToggle" class="music-control">♫</button>
+
+
+    <!-- ================= SCREEN 1 ================= -->
+
+    <section class="screen active" id="screen1">
+
+        <div class="screen-content">
+
+            <p class="small-text reveal-line">
+                Hey...
+            </p>
+
+            <h1 class="main-title reveal-line">
+                I made something<br>
+                <span>for you.</span>
+            </h1>
+
+            <p class="subtitle reveal-line">
+                It's nothing too complicated.<br>
+                Just something I've been wanting to say.
+            </p>
+
+            <button class="btn btn-primary" id="startBtn">
+                Open it ♡
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SCREEN 2 ================= -->
+
+    <section class="screen" id="screen2">
+
+        <div class="screen-content">
+
+            <p class="small-text">
+                Before you continue...
+            </p>
+
+            <h1 class="main-title">
+                There's something<br>
+                <span>I want you to know.</span>
+            </h1>
+
+            <p class="subtitle">
+                So take your time.<br>
+                No pressure. Just read.
+            </p>
+
+            <button class="btn btn-primary" id="continueBtn">
+                Keep reading →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SCREEN 3 ================= -->
+
+    <section class="screen" id="screen3">
+
+        <div class="screen-content">
+
+            <div class="letter-card">
+
+                <!-- CSS ROSE -->
+                <div class="letter-rose">
+
+                    <div class="css-rose small-rose">
+
+                        <div class="petal-ring">
+                            <span class="petal p1"></span>
+                            <span class="petal p2"></span>
+                            <span class="petal p3"></span>
+                            <span class="petal p4"></span>
+                            <span class="petal p5"></span>
+                            <span class="petal p6"></span>
+                        </div>
+
+                        <div class="inner-petals">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="rose-center"></div>
+
+                    </div>
+
+                </div>
+
+                <p class="letter-salutation">
+                    Dear <span id="crushName">you</span>,
+                </p>
+
+                <div class="letter-body" id="typedLetter"></div>
+
+                <button class="btn btn-primary" id="moreBtn">
+                    There's more...
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SCREEN 4 ================= -->
+
+    <section class="screen" id="screen4">
+
+        <div class="screen-content bloom-screen">
+
+            <div class="bloom-stage">
+
+                <div class="glow-halo"></div>
+
+                <!-- CSS ROSE -->
+                <div class="css-rose big-rose">
+
+                    <div class="petal-ring">
+
+                        <span class="petal p1"></span>
+                        <span class="petal p2"></span>
+                        <span class="petal p3"></span>
+                        <span class="petal p4"></span>
+                        <span class="petal p5"></span>
+                        <span class="petal p6"></span>
+                        <span class="petal p7"></span>
+                        <span class="petal p8"></span>
+
+                    </div>
+
+                    <div class="inner-petals">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="rose-center"></div>
+
+                </div>
+
+            </div>
+
+            <p class="small-text">
+                Maybe you've already guessed...
+            </p>
+
+            <h1 class="main-title">
+                I really <span>like you.</span>
+            </h1>
+
+            <button class="btn btn-primary" id="confessionBtn">
+                Continue ♡
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SCREEN 5 ================= -->
+
+    <section class="screen" id="screen5">
+
+        <div class="screen-content">
+
+            <p class="small-text">
+                Okay... here it is.
+            </p>
+
+            <h1 class="confession-text" id="confessionText"></h1>
+
+            <p class="subtitle">
+                I just wanted to be honest with you.
+            </p>
+
+            <button class="btn btn-primary" id="finalBtn">
+                One last thing →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SCREEN 6 ================= -->
+
+    <section class="screen" id="screen6">
+
+        <div class="screen-content final-screen">
+
+            <div class="bloom-stage bloom-stage-final">
+
+                <div class="glow-halo"></div>
+
+                <div class="css-rose big-rose">
+
+                    <div class="petal-ring">
+
+                        <span class="petal p1"></span>
+                        <span class="petal p2"></span>
+                        <span class="petal p3"></span>
+                        <span class="petal p4"></span>
+                        <span class="petal p5"></span>
+                        <span class="petal p6"></span>
+                        <span class="petal p7"></span>
+                        <span class="petal p8"></span>
+
+                    </div>
+
+                    <div class="inner-petals">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="rose-center"></div>
+
+                </div>
+
+            </div>
+
+            <p class="small-text">
+                So...
+            </p>
+
+            <h1 class="main-title">
+                I like you. ♡
+            </h1>
+
+            <p class="subtitle">
+                That's all I wanted you to know.<br>
+                Thank you for reading.
+            </p>
+
+            <button class="btn btn-ghost" id="replayBtn">
+                Read again ↻
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

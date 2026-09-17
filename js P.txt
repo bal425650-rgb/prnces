@@ -1,0 +1,497 @@
+/* =========================================
+   💗 CUSTOMIZE YOUR LETTER HERE
+========================================= */
+
+const crushName = "Your Name";
+
+
+const letterMessage =
+`"I don't wanna look at anything else now that I saw you, and I don't wanna think of anything else now that I thought of you."
+
+That's the most relatable lyric I've ever heard since I met you.
+
+Diba kay first meeting nato kay during pag cluster, adto jud ko ka notice nimo pag warm up² namo, which is weird kay dili jud ko observant na pagka taw.
+
+Then na shock jud ko adtong mi duol imong friend nako na naa daw gusto magpa pic nako, unya ikaw diay to.
+
+Honestly mura jud kog buang kay halos tanan nalang jud akong gipangutana kung unsa imong IG hihihihihihi :>
+
+Unya like na mind blown jud ko kay pag open nako sa akong IG kay naka-follow nakaaa, like what the hellyyyyy.
+
+Then a few days went by and then another bomb shell went by like boogshhhh—mi-chat kaaaa, unja mura jud kog waja² leyk lejeth.
+
+I was looking forward sa BACS raba para nimo.
+
+And I know rushed ra siya gamay hihihi, pero I want to know you more, not just some random mutual.
+
+And if ever gani ga-question ka ngano ikaw, that's simple 🙂
+
+I like you because you are you.
+
+I like the way how you're obsessed with the color pink.
+
+I like the way you call me "Champ" or "Champo" or "Champolait."
+
+And to be honest, I'm terrified jud HAHAHA.
+
+I've never actually experienced this kind of feeling.
+
+It's scary and calming at the same time. 🙂
+
+And to be honest, our friendship is already ruined when I started catching feelings for you.
+
+And that's my why. 🙂`;
+
+
+const confessionMessage =
+`I really like you.
+
+Not because you're perfect,
+but because there's something about you
+that I genuinely appreciate.
+
+I just wanted to be honest with you. ♡`;
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const screens =
+    document.querySelectorAll(".screen");
+
+const backgroundMusic =
+    document.getElementById("backgroundMusic");
+
+const musicToggle =
+    document.getElementById("musicToggle");
+
+const petalField =
+    document.getElementById("petalField");
+
+const crushNameElement =
+    document.getElementById("crushName");
+
+const typedLetter =
+    document.getElementById("typedLetter");
+
+const confessionText =
+    document.getElementById("confessionText");
+
+
+/* =========================================
+   SCREEN NAVIGATION
+========================================= */
+
+function showScreen(number) {
+
+    screens.forEach(screen => {
+
+        screen.classList.remove("active");
+
+    });
+
+    const selectedScreen =
+        document.getElementById(`screen${number}`);
+
+    if (selectedScreen) {
+
+        selectedScreen.classList.add("active");
+
+    }
+
+}
+
+
+/* =========================================
+   MUSIC
+========================================= */
+
+let musicStarted = false;
+
+
+function startMusic() {
+
+    if (musicStarted) {
+        return;
+    }
+
+    backgroundMusic.volume = 0.35;
+
+    backgroundMusic
+        .play()
+        .then(() => {
+
+            musicStarted = true;
+
+            musicToggle.textContent = "♫";
+
+        })
+        .catch(error => {
+
+            console.log(
+                "Music needs user interaction:",
+                error
+            );
+
+        });
+
+}
+
+
+/* Music ON / OFF */
+
+musicToggle.addEventListener(
+    "click",
+    () => {
+
+        if (backgroundMusic.paused) {
+
+            backgroundMusic
+                .play()
+                .then(() => {
+
+                    musicStarted = true;
+
+                    musicToggle.textContent = "♫";
+
+                });
+
+        } else {
+
+            backgroundMusic.pause();
+
+            musicToggle.textContent = "🔇";
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   TYPEWRITER
+========================================= */
+
+let typingTimer = null;
+
+
+function typeText(element, text, speed = 25) {
+
+    clearInterval(typingTimer);
+
+    element.innerHTML = "";
+
+    let index = 0;
+
+    const caret =
+        document.createElement("span");
+
+    caret.className = "caret";
+
+    element.appendChild(caret);
+
+
+    typingTimer =
+        setInterval(() => {
+
+            if (index >= text.length) {
+
+                clearInterval(typingTimer);
+
+                typingTimer = null;
+
+                caret.remove();
+
+                return;
+            }
+
+
+            const character =
+                text.charAt(index);
+
+
+            if (character === "\n") {
+
+                caret.before(
+                    document.createElement("br")
+                );
+
+            } else {
+
+                caret.before(
+                    document.createTextNode(character)
+                );
+
+            }
+
+
+            index++;
+
+        }, speed);
+
+}
+
+
+/* =========================================
+   FALLING PETALS
+========================================= */
+
+let petalInterval = null;
+
+
+function createPetal() {
+
+    const petal =
+        document.createElement("span");
+
+    petal.className =
+        "falling-petal";
+
+
+    /* Random horizontal position */
+
+    petal.style.left =
+        Math.random() * 100 + "vw";
+
+
+    /* Random size */
+
+    const size =
+        Math.random() * 10 + 8;
+
+    petal.style.width =
+        size + "px";
+
+    petal.style.height =
+        size * 1.4 + "px";
+
+
+    /* Random falling speed */
+
+    const duration =
+        Math.random() * 6 + 7;
+
+
+    petal.style.animationDuration =
+        `${duration}s, ${Math.random() * 2 + 2}s`;
+
+
+    petal.style.animationDelay =
+        Math.random() * 2 + "s";
+
+
+    petalField.appendChild(petal);
+
+
+    setTimeout(() => {
+
+        petal.remove();
+
+    }, (duration + 3) * 1000);
+
+}
+
+
+function startPetals() {
+
+    if (petalInterval) {
+        return;
+    }
+
+    petalInterval =
+        setInterval(createPetal, 700);
+
+}
+
+
+function stopPetals() {
+
+    if (petalInterval) {
+
+        clearInterval(petalInterval);
+
+        petalInterval = null;
+
+    }
+
+}
+
+
+/* =========================================
+   SCREEN 1
+========================================= */
+
+document
+    .getElementById("startBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            /*
+             * The first click allows
+             * the browser to start music.
+             */
+
+            startMusic();
+
+            startPetals();
+
+            showScreen(2);
+
+        }
+    );
+
+
+/* =========================================
+   SCREEN 2
+========================================= */
+
+document
+    .getElementById("continueBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            crushNameElement.textContent =
+                crushName;
+
+            showScreen(3);
+
+
+            setTimeout(() => {
+
+                typeText(
+                    typedLetter,
+                    letterMessage,
+                    18
+                );
+
+            }, 700);
+
+        }
+    );
+
+
+/* =========================================
+   SCREEN 3
+========================================= */
+
+document
+    .getElementById("moreBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            showScreen(4);
+
+        }
+    );
+
+
+/* =========================================
+   SCREEN 4
+========================================= */
+
+document
+    .getElementById("confessionBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            showScreen(5);
+
+
+            setTimeout(() => {
+
+                typeText(
+                    confessionText,
+                    confessionMessage,
+                    40
+                );
+
+            }, 500);
+
+        }
+    );
+
+
+/* =========================================
+   SCREEN 5
+========================================= */
+
+document
+    .getElementById("finalBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            showScreen(6);
+
+        }
+    );
+
+
+/* =========================================
+   REPLAY
+========================================= */
+
+document
+    .getElementById("replayBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            /* Stop typing */
+
+            clearInterval(typingTimer);
+
+            typingTimer = null;
+
+
+            /* Clear text */
+
+            typedLetter.innerHTML = "";
+
+            confessionText.innerHTML = "";
+
+
+            /* Clear petals */
+
+            petalField.innerHTML = "";
+
+
+            /* Go back */
+
+            showScreen(1);
+
+
+            /*
+             * Keep music playing during replay.
+             * This means she doesn't have to
+             * click the music button again.
+             */
+
+            if (backgroundMusic.paused) {
+
+                backgroundMusic
+                    .play()
+                    .then(() => {
+
+                        musicStarted = true;
+
+                        musicToggle.textContent = "♫";
+
+                    });
+
+            }
+
+        }
+    );
+
+
+/* =========================================
+   START WEBSITE
+========================================= */
+
+showScreen(1);

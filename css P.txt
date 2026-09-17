@@ -1,0 +1,815 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* =========================
+   COLORS
+========================= */
+
+:root {
+    --cream: #fff8fb;
+
+    --blush: #f8d3e1;
+    --pink: #efa8c4;
+    --dark-pink: #c96f97;
+
+    --petal-light: #ffe3ee;
+    --petal-mid: #efa5c2;
+    --petal-dark: #c96891;
+
+    --lavender: #ded2f0;
+    --purple: #aa91cc;
+
+    --ink: #4d3d48;
+    --soft-ink: #806c79;
+
+    --display: "Cormorant Garamond", serif;
+    --body: "DM Sans", sans-serif;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(248, 211, 225, 0.8),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(222, 210, 240, 0.8),
+            transparent 35%
+        ),
+        var(--cream);
+
+    color: var(--ink);
+    font-family: var(--body);
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.blob {
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    opacity: 0.3;
+
+    animation: floatBlob 12s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+    background: var(--pink);
+
+    top: -120px;
+    left: -100px;
+}
+
+.blob-2 {
+    background: var(--lavender);
+
+    top: 25%;
+    right: -120px;
+
+    animation-delay: -4s;
+}
+
+.blob-3 {
+    background: var(--blush);
+
+    bottom: -150px;
+    left: 35%;
+
+    animation-delay: -7s;
+}
+
+@keyframes floatBlob {
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(40px, -30px) scale(1.15);
+    }
+}
+
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(0.97);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s;
+
+    z-index: 2;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: scale(1);
+}
+
+.screen-content {
+    width: min(700px, 100%);
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.small-text {
+    font-family: var(--body);
+
+    font-size: 0.85rem;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+    color: var(--soft-ink);
+
+    margin-bottom: 18px;
+}
+
+.main-title {
+    font-family: var(--display);
+
+    font-size: clamp(3rem, 8vw, 6rem);
+
+    font-weight: 500;
+
+    line-height: 0.95;
+
+    margin-bottom: 25px;
+}
+
+.main-title span {
+    color: var(--dark-pink);
+
+    font-style: italic;
+}
+
+.subtitle {
+    font-size: 1rem;
+
+    line-height: 1.8;
+
+    color: var(--soft-ink);
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+    border: none;
+
+    padding: 14px 27px;
+
+    border-radius: 50px;
+
+    font-family: var(--body);
+
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-primary {
+    background: var(--dark-pink);
+
+    color: white;
+
+    box-shadow:
+        0 10px 30px rgba(201, 111, 151, 0.25);
+}
+
+.btn-primary:hover {
+    box-shadow:
+        0 15px 35px rgba(201, 111, 151, 0.4);
+}
+
+.btn-ghost {
+    background: transparent;
+
+    color: var(--dark-pink);
+
+    border: 1px solid rgba(201, 111, 151, 0.4);
+}
+
+
+/* =========================
+   LETTER CARD
+========================= */
+
+.letter-card {
+    width: min(650px, 100%);
+
+    max-height: 85vh;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    padding: 35px 35px 30px;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 70px rgba(80, 50, 70, 0.1);
+
+    border: 1px solid rgba(255, 255, 255, 0.85);
+
+    overflow: hidden;
+}
+
+.letter-rose {
+    display: flex;
+
+    justify-content: center;
+
+    height: 110px;
+
+    margin-bottom: 5px;
+}
+
+.letter-salutation {
+    font-family: var(--display);
+
+    font-size: 2rem;
+
+    margin-bottom: 18px;
+}
+
+.letter-salutation span {
+    color: var(--dark-pink);
+
+    font-style: italic;
+}
+
+
+/* =========================
+   LONG LETTER
+========================= */
+
+.letter-body {
+    font-family: var(--display);
+
+    font-size: 1.25rem;
+
+    line-height: 1.65;
+
+    color: var(--ink);
+
+    text-align: left;
+
+    max-height: 48vh;
+
+    overflow-y: auto;
+
+    padding: 5px 15px 5px 5px;
+
+    margin-bottom: 25px;
+
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar */
+
+.letter-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.letter-body::-webkit-scrollbar-track {
+    background: rgba(222, 210, 240, 0.2);
+
+    border-radius: 10px;
+}
+
+.letter-body::-webkit-scrollbar-thumb {
+    background: var(--pink);
+
+    border-radius: 10px;
+}
+
+.letter-body::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-pink);
+}
+
+
+/* Typewriter cursor */
+
+.caret {
+    display: inline-block;
+
+    border-right: 2px solid var(--dark-pink);
+
+    height: 1.1em;
+
+    margin-left: 2px;
+
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+/* =========================
+   ROSE
+========================= */
+
+.css-rose {
+    position: relative;
+
+    width: 150px;
+    height: 150px;
+
+    margin: auto;
+
+    transform-origin: center;
+}
+
+.small-rose {
+    transform: scale(0.7);
+}
+
+.big-rose {
+    transform: scale(1);
+}
+
+
+/* Outer petals */
+
+.petal-ring {
+    position: absolute;
+
+    inset: 0;
+
+    transform-origin: center;
+
+    animation: rotateRose 25s linear infinite;
+}
+
+.petal {
+    position: absolute;
+
+    width: 70px;
+    height: 95px;
+
+    left: 40px;
+    top: 25px;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 30%,
+            var(--petal-light),
+            var(--petal-mid) 60%,
+            var(--petal-dark)
+        );
+
+    border-radius: 70% 70% 50% 50%;
+
+    transform-origin: 35px 50px;
+
+    box-shadow:
+        inset 0 0 15px rgba(255, 255, 255, 0.3),
+        0 8px 15px rgba(130, 70, 100, 0.1);
+}
+
+.p1 {
+    transform: rotate(0deg) translateY(-20px);
+}
+
+.p2 {
+    transform: rotate(45deg) translateY(-20px);
+}
+
+.p3 {
+    transform: rotate(90deg) translateY(-20px);
+}
+
+.p4 {
+    transform: rotate(135deg) translateY(-20px);
+}
+
+.p5 {
+    transform: rotate(180deg) translateY(-20px);
+}
+
+.p6 {
+    transform: rotate(225deg) translateY(-20px);
+}
+
+.p7 {
+    transform: rotate(270deg) translateY(-20px);
+}
+
+.p8 {
+    transform: rotate(315deg) translateY(-20px);
+}
+
+
+/* Inner petals */
+
+.inner-petals {
+    position: absolute;
+
+    inset: 22px;
+
+    animation: bloom 2s ease-in-out infinite alternate;
+}
+
+.inner-petals span {
+    position: absolute;
+
+    width: 55px;
+    height: 75px;
+
+    left: 25px;
+    top: 15px;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #ffe1ec,
+            #db779e
+        );
+
+    border-radius: 70% 70% 45% 45%;
+
+    transform-origin: 27px 40px;
+}
+
+.inner-petals span:nth-child(1) {
+    transform: rotate(0deg);
+}
+
+.inner-petals span:nth-child(2) {
+    transform: rotate(90deg);
+}
+
+.inner-petals span:nth-child(3) {
+    transform: rotate(180deg);
+}
+
+.inner-petals span:nth-child(4) {
+    transform: rotate(270deg);
+}
+
+
+/* Center */
+
+.rose-center {
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+
+    left: 52px;
+    top: 52px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffe9f2,
+            #b95882
+        );
+
+    box-shadow:
+        inset 0 0 15px rgba(80, 30, 50, 0.2);
+}
+
+
+/* Rose animation */
+
+@keyframes rotateRose {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bloom {
+    from {
+        transform: scale(0.95);
+    }
+
+    to {
+        transform: scale(1.05);
+    }
+}
+
+
+/* =========================
+   BLOOM STAGE
+========================= */
+
+.bloom-stage {
+    position: relative;
+
+    width: 220px;
+    height: 220px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.glow-halo {
+    position: absolute;
+
+    width: 200px;
+    height: 200px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(239, 165, 194, 0.4),
+            transparent 65%
+        );
+
+    animation: haloPulse 3s ease-in-out infinite;
+}
+
+@keyframes haloPulse {
+    0%,
+    100% {
+        transform: scale(0.9);
+
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.2);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   CONFESSION
+========================= */
+
+.confession-text {
+    font-family: var(--display);
+
+    font-size: clamp(2.5rem, 7vw, 5rem);
+
+    line-height: 1.05;
+
+    font-weight: 500;
+
+    color: var(--dark-pink);
+
+    margin: 30px auto;
+
+    max-width: 650px;
+
+    min-height: 100px;
+}
+
+
+/* =========================
+   FALLING PETALS
+========================= */
+
+#petalField {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 4;
+}
+
+.falling-petal {
+    position: absolute;
+
+    top: -30px;
+
+    width: 13px;
+    height: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--petal-light),
+            var(--petal-dark)
+        );
+
+    border-radius: 70% 30% 70% 30%;
+
+    opacity: 0.75;
+
+    animation:
+        fallPetal linear forwards,
+        swayPetal ease-in-out infinite alternate;
+}
+
+@keyframes fallPetal {
+    to {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+@keyframes swayPetal {
+    from {
+        margin-left: -30px;
+    }
+
+    to {
+        margin-left: 30px;
+    }
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+.music-control {
+    position: fixed;
+
+    right: 25px;
+    top: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(201, 111, 151, 0.3);
+
+    background: rgba(255, 255, 255, 0.7);
+
+    backdrop-filter: blur(10px);
+
+    color: var(--dark-pink);
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    font-size: 1.1rem;
+
+    transition: 0.3s ease;
+}
+
+.music-control:hover {
+    transform: scale(1.1);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .screen {
+        padding: 18px;
+    }
+
+    .main-title {
+        font-size: clamp(2.8rem, 14vw, 4rem);
+    }
+
+    .letter-card {
+        padding: 25px 18px 20px;
+
+        max-height: 88vh;
+    }
+
+    .letter-body {
+        font-size: 1.1rem;
+
+        max-height: 52vh;
+    }
+
+    .letter-salutation {
+        font-size: 1.7rem;
+    }
+
+    .letter-rose {
+        height: 90px;
+    }
+
+    .music-control {
+        top: 15px;
+        right: 15px;
+    }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
